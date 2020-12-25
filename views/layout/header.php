@@ -53,11 +53,15 @@
                             <div class="sb-nav-link-icon"><i class="fa fa-user"></i></div>
                             Profile
                         </a>
-                        <div class="sb-sidenav-menu-heading">Settings</div>
-                        <a class="nav-link" href="charts.html">
-                            <div class="sb-nav-link-icon"><i class="fa fa-users"></i></div>
-                            Users
-                        </a>
+                        <?php if ($_SESSION) : ?>
+                            <?php if ($_SESSION['id_role'] == 1) : ?>
+                                <div class="sb-sidenav-menu-heading">Settings</div>
+                                <a class="nav-link" href="charts.html">
+                                    <div class="sb-nav-link-icon"><i class="fa fa-users"></i></div>
+                                    Users
+                                </a>
+                            <?php endif; ?>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
