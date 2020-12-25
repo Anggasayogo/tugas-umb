@@ -24,14 +24,14 @@
                                     <h3 class="text-center font-weight-light my-4">Login</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form>
+                                    <form method="POST" action="controllers/AuthController.php">
                                         <div class="form-group">
                                             <label class="small mb-1" for="inputEmailAddress">Username</label>
-                                            <input class="form-control py-4" id="inputEmailAddress" type="text" placeholder="Input Username" />
+                                            <input class="form-control py-4" name="username" id="inputEmailAddress" type="text" placeholder="Input Username" />
                                         </div>
                                         <div class="form-group">
                                             <label class="small mb-1" for="inputPassword">Password</label>
-                                            <input class="form-control py-4" id="inputPassword" type="password" placeholder="Enter password" />
+                                            <input class="form-control py-4" name="password" id="inputPassword" type="password" placeholder="Enter password" />
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox">
@@ -40,7 +40,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group d-flex align-items-center justify-content-center mt-4 mb-0">
-                                            <a class="btn btn-primary" href="index.html">Login</a>
+                                            <button class="btn btn-primary" name="submit" type="submit">Login</button>
                                         </div>
                                     </form>
                                 </div>
