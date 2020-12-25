@@ -7,25 +7,31 @@ if (isset($_POST['submit'])) {
     $username = htmlspecialchars($_POST['username']);
     $password = htmlspecialchars($_POST['password']);
 
-    $query = mysqli_query($conection, "SELECT * FROM users JOIN roles ON users.id_role=roles.id_role WHERE username='$username' ");
+    if (!$username || !$password) {
+        echo "<script>alert('Field Tidak boleh Kosong')</script>";
+        echo "<script> location='../index.php'; </script>";
+    }
+
+    $query = mysqli_query(
+        $conection,
+        "SELECT * FROM users JOIN roles ON users.id_role=roles.id_role WHERE username='$username' "
+    );
     $check = mysqli_fetch_row($query);
 
-    var_dump($check);
-    die;
-
     if ($check) {
-        if ($check[1] === $username) {
-            if ($check[2] === $password) {
-            } else {
-                echo "<script>alert('Akun Mungkin Belum Terdaftar')</script>";
-                echo "<script> location='../index.php'; </script>";
-            }
+        if ($check[2] === $password) {
+
+            $_SESSION['role_name'] = $check[5];
+            $_SESSION['id_role'] = $check[4];
+
+            echo "<script>alert('SuccessLogin')</script>";
+            echo "<script> location='../index.php'; </script>";
         } else {
-            echo "<script>alert('Akun Mungkin Belum Terdaftar')</script>";
+            echo "<script>alert('Password Salah/Tidak Diketahui')</script>";
             echo "<script> location='../index.php'; </script>";
         }
     } else {
-        echo "<script>alert('Akun Mungkin Belum Terdaftar')</script>";
+        echo "<script>alert('Username Anda Salah/Tidak diketahui')</script>";
         echo "<script> location='../index.php'; </script>";
     }
 }
