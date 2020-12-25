@@ -23,8 +23,6 @@ if (isset($_POST['submit'])) {
 
             $_SESSION['role_name'] = $check[5];
             $_SESSION['id_role'] = $check[4];
-
-            echo "<script>alert('SuccessLogin')</script>";
             echo "<script> location='../index.php'; </script>";
         } else {
             echo "<script>alert('Password Salah/Tidak Diketahui')</script>";
